@@ -17,10 +17,8 @@ class UsersLoader extends Component {
     const selectedNationality = event.target.value;
     this.setState({ isLoading: true, nationality: selectedNationality });
 
-    // Очистіть список користувачів перед завантаженням нових даних
     this.setState({ users: [] });
 
-    // Виконайте запит до API з обраною національністю
     fetch(`https://randomuser.me/api/?results=10&nat=${selectedNationality}&seed=foobar&page=1`)
       .then((response) => response.json())
       .then((data) =>
@@ -101,7 +99,6 @@ class UsersLoader extends Component {
           <option value="ua">Українці</option>
           <option value="us">Американці</option>
           <option value="fr">Французи</option>
-          {/* Додайте інші національності, які вам потрібні */}
         </select>
         <button disabled={page === 1} onClick={this.prevPage}>{"<"}</button>
         <span>page:{page}</span>
